@@ -4,9 +4,14 @@
 
 function mostrarPassword() {
 
-    document.getElementById("inicio").classList.add("oculto");
+    const inicio = document.getElementById("inicio");
+    const password = document.getElementById("password");
 
-    document.getElementById("password").classList.remove("oculto");
+    if (!inicio || !password) return;
+
+    inicio.classList.add("oculto");
+
+    password.classList.remove("oculto");
 
 }
 
@@ -17,22 +22,21 @@ function mostrarPassword() {
 
 function comprobarPassword() {
 
-    const respuesta = document
-        .getElementById("passwordInput")
-        .value
-        .trim();
-
+    const input = document.getElementById("passwordInput");
     const error = document.getElementById("errorPassword");
+
+    const password = document.getElementById("password");
+    const carta = document.getElementById("carta");
+
+    if (!input || !error || !password || !carta) return;
+
+    const respuesta = input.value.trim();
 
     if (respuesta === "1808") {
 
-        document
-            .getElementById("password")
-            .classList.add("oculto");
+        password.classList.add("oculto");
 
-        document
-            .getElementById("carta")
-            .classList.remove("oculto");
+        carta.classList.remove("oculto");
 
         window.scrollTo({
             top: 0,
@@ -54,44 +58,94 @@ function comprobarPassword() {
 // ==============================
 
 let youtubePlayer = null;
+
 let youtubeListo = false;
+
 let musicaReproduciendo = false;
 
 
+// Esta función la llama automáticamente YouTube
 function onYouTubeIframeAPIReady() {
 
-    youtubePlayer = new YT.Player("youtubePlayer", {
+    youtubePlayer = new YT.Player(
+        "youtubePlayer",
+        {
 
-        events: {
+            events: {
 
-            onReady: function () {
+                onReady: function () {
 
-                youtubeListo = true;
+                    youtubeListo = true;
 
-            },
+                },
 
-            onStateChange: function (event) {
+                onStateChange: function (event) {
 
-                if (event.data === YT.PlayerState.PLAYING) {
+                    if (
+                        event.data ===
+                        YT.PlayerState.PLAYING
+                    ) {
 
-                    musicaReproduciendo = true;
+                        musicaReproduciendo = true;
 
-                }
+                        actualizarEstadoMusica(
+                            "🎵 Reproduciendo..."
+                        );
 
-                if (
-                    event.data === YT.PlayerState.PAUSED ||
-                    event.data === YT.PlayerState.ENDED
-                ) {
+                    }
 
-                    musicaReproduciendo = false;
+
+                    if (
+                        event.data ===
+                        YT.PlayerState.PAUSED
+                    ) {
+
+                        musicaReproduciendo = false;
+
+                        actualizarEstadoMusica(
+                            "⏸️ Pausado"
+                        );
+
+                    }
+
+
+                    if (
+                        event.data ===
+                        YT.PlayerState.ENDED
+                    ) {
+
+                        musicaReproduciendo = false;
+
+                        actualizarEstadoMusica(
+                            "🎵 Toca el cassette para continuar"
+                        );
+
+                    }
 
                 }
 
             }
 
         }
+    );
 
-    });
+}
+
+
+// ==============================
+// TEXTO DEL CASSETTE
+// ==============================
+
+function actualizarEstadoMusica(texto) {
+
+    const estado =
+        document.getElementById("estadoMusica");
+
+    if (estado) {
+
+        estado.textContent = texto;
+
+    }
 
 }
 
@@ -102,35 +156,47 @@ function onYouTubeIframeAPIReady() {
 
 function reproducirMusica() {
 
-    const player = document.getElementById("youtubePlayer");
+    const reproductor =
+        document.getElementById("youtubePlayer");
 
-    if (!player) return;
 
-    player.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+    // Si YouTube todavía no terminó
+    // de cargar, mostramos el reproductor.
 
-}
+    if (!youtubeListo || !youtubePlayer) {
 
-    if (!youtubeListo) {
+        if (reproductor) {
 
-        alert("Espera un segundo y vuelve a tocar el cassette 🎵");
+            reproductor.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+        actualizarEstadoMusica(
+            "🎵 Espera a que cargue la playlist..."
+        );
 
         return;
 
     }
 
 
+    // PAUSAR
+
     if (musicaReproduciendo) {
 
         youtubePlayer.pauseVideo();
 
-    } else {
-
-        youtubePlayer.playVideo();
+        return;
 
     }
+
+
+    // REPRODUCIR
+
+    youtubePlayer.playVideo();
 
 }
 
@@ -179,6 +245,24 @@ function siguienteRecuerdo() {
         document.getElementById("teAmo");
 
 
+    if (
+        !contenedor ||
+        !contador ||
+        !corazon ||
+        !textoCorazon ||
+        !imagenFinal ||
+        !teAmo
+    ) {
+
+        return;
+
+    }
+
+
+    // =========================
+    // MOSTRAR RECUERDO
+    // =========================
+
     if (recuerdoActual < recuerdos.length) {
 
         contenedor.innerHTML = `
@@ -214,7 +298,14 @@ function siguienteRecuerdo() {
 
         }
 
-    } else {
+    }
+
+
+    // =========================
+    // IMAGEN FINAL
+    // =========================
+
+    else {
 
         corazon.style.display = "none";
 
@@ -229,7 +320,8 @@ function siguienteRecuerdo() {
 
 
         imagenFinal.scrollIntoView({
-            behavior: "smooth"
+            behavior: "smooth",
+            block: "center"
         });
 
     }
