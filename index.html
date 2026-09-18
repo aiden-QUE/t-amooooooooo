@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Dany 💙</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SOBRE INICIAL -->
+    <section id="inicio">
+        <div class="sobre" onclick="mostrarPassword()">
+            💌
+        </div>
+        <p>Para ti, mi lindo sueño</p>
+    </section>
+
+
+    <!-- CONTRASEÑA -->
+    <section id="password" class="oculto">
+        <h2>¡ESPERA! 🌙</h2>
+        <p>Necesitas una contraseña para entrar...</p>
+
+        <p class="acertijo">
+            “Con nosotros comenzó,<br>
+            y eso celebramos hoy.”
+        </p>
+
+        <input 
+            type="text" 
+            id="passwordInput"
+            maxlength="4"
+            placeholder="____"
+        >
+
+        <button onclick="comprobarPassword()">
+            🔓 Desbloquear
+        </button>
+
+        <p id="errorPassword"></p>
+    </section>
+
+
+    <!-- CARTA -->
+    <main id="carta" class="oculto">
+
+        <div class="hoja">
+
+            <!-- CARTA 1 -->
+            <section class="parte-carta">
+                <img src="img/carta1.jpg" alt="Imagen de la carta 1">
+
+                <p>
+                    Hola honey,<br><br>
+
+                    Hoy es un día muy especial para ambos...
+                </p>
+            </section>
+
+
+            <!-- CARTA 2 -->
+            <section class="parte-carta">
+                <img src="img/carta2.jpg" alt="Imagen de la carta 2">
+
+                <p>
+                    He amado cada momento a tu lado...
+                </p>
+            </section>
+
+
+            <!-- CARTA 3 -->
+            <section class="parte-carta">
+                <img src="img/carta3.jpg" alt="Imagen de la carta 3">
+
+                <p>
+                    Porque conmigo jamás tendrás que fingir...
+                </p>
+            </section>
+
+
+            <!-- CASSETTE -->
+            <section class="musica">
+                <div class="cassette">
+                    🎵
+                </div>
+
+                <h2>Nuestra música 🌙</h2>
+
+                <!-- AQUÍ IRÁ LA PLAYLIST DE YOUTUBE -->
+                <div class="playlist">
+                    Playlist de YouTube
+                </div>
+            </section>
+
+
+            <!-- CORAZÓN -->
+            <section class="final-interactivo">
+
+                <button id="corazon" onclick="comenzarFinal()">
+                    ❤️
+                    <span>CLIC AQUÍ</span>
+                </button>
+
+                <!-- AQUÍ APARECERÁN LAS 5-6 IMÁGENES -->
+                <div id="recuerdos"></div>
+
+                <!-- CUENTA REGRESIVA -->
+                <div id="contador"></div>
+
+                <!-- IMAGEN FINAL -->
+                <img 
+                    id="imagenFinal"
+                    src="img/final.jpg"
+                    alt="Imagen final"
+                >
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
