@@ -2,50 +2,79 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Para Dany 💙</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- ========================= -->
+
+    <!-- ================================= -->
     <!-- SOBRE -->
-    <!-- ========================= -->
+    <!-- ================================= -->
 
     <section id="inicio">
 
         <button
             class="sobre"
-            onclick="mostrarPassword()"
+            id="botonSobre"
             type="button"
             aria-label="Abrir sobre"
         >
+
             💌
+
         </button>
 
-        <p>Para ti, mi lindo sueño</p>
+
+        <p>
+            Para ti, mi lindo sueño
+        </p>
 
     </section>
 
 
-    <!-- ========================= -->
+
+    <!-- ================================= -->
     <!-- CONTRASEÑA -->
-    <!-- ========================= -->
+    <!-- ================================= -->
 
-    <section id="password" class="oculto">
+    <section
+        id="password"
+        class="oculto"
+    >
 
-        <h2>¡ESPERA! 🌙</h2>
+        <h2>
+            ¡ESPERA! 🌙
+        </h2>
 
-        <p>Necesitas una contraseña para entrar...</p>
+
+        <p>
+            Necesitas una contraseña para entrar...
+        </p>
+
 
         <p class="acertijo">
+
             “Con nosotros comenzó,<br>
             y eso celebramos hoy.”
+
         </p>
+
 
         <input
             type="text"
@@ -55,37 +84,52 @@
             placeholder="____"
         >
 
+
         <button
-            onclick="comprobarPassword()"
+            id="botonDesbloquear"
             type="button"
         >
+
             🔓 Desbloquear
+
         </button>
+
 
         <p id="errorPassword"></p>
 
     </section>
 
 
-    <!-- ========================= -->
-    <!-- CARTA -->
-    <!-- ========================= -->
 
-    <main id="carta" class="oculto">
+    <!-- ================================= -->
+    <!-- CARTA -->
+    <!-- ================================= -->
+
+    <main
+        id="carta"
+        class="oculto"
+    >
+
 
         <div class="hoja">
 
 
-            <!-- CARTA 1 -->
+
+            <!-- ============================= -->
+            <!-- PARTE 1 -->
+            <!-- ============================= -->
 
             <section class="parte-carta">
+
 
                 <img
                     src="img/carta1.jpg"
                     alt="Imagen de la carta"
                 >
 
+
                 <p>
+
                     Hola honey,<br><br>
 
                     Hoy es un día muy especial para ambos.
@@ -105,21 +149,29 @@
                     completo mi perspectiva de las relaciones a distancia
                     y eso es algo que nunca creí que pasaría, pero hoy
                     que estoy a tu lado, no me arrepiento de nada.
+
                 </p>
+
 
             </section>
 
 
-            <!-- CARTA 2 -->
+
+            <!-- ============================= -->
+            <!-- PARTE 2 -->
+            <!-- ============================= -->
 
             <section class="parte-carta">
+
 
                 <img
                     src="img/carta2.jpg"
                     alt="Imagen de la carta"
                 >
 
+
                 <p>
+
                     He amado cada momento a tu lado y amaré cada momento
                     que pasemos a futuro.<br><br>
 
@@ -135,21 +187,29 @@
 
                     Siempre que necesites espacio te lo daré y,
                     cuando estés listo, estaré a tu lado.
+
                 </p>
+
 
             </section>
 
 
-            <!-- CARTA 3 -->
+
+            <!-- ============================= -->
+            <!-- PARTE 3 -->
+            <!-- ============================= -->
 
             <section class="parte-carta">
+
 
                 <img
                     src="img/carta3.jpg"
                     alt="Imagen de la carta"
                 >
 
+
                 <p>
+
                     Porque conmigo jamás tendrás que fingir.
                     No me iré jamás.<br><br>
 
@@ -161,93 +221,135 @@
                     y besaré cada herida que te cueste sanar.<br><br>
 
                     Te amo, mi lindo sueño. ❤️
+
                 </p>
+
 
             </section>
 
 
-            <!-- ========================= -->
+
+            <!-- ================================= -->
             <!-- MÚSICA -->
-            <!-- ========================= -->
+            <!-- ================================= -->
 
             <section class="musica">
 
-                <h2>Nuestra canción 🌙</h2>
+
+                <h2>
+                    Nuestra canción 🌙
+                </h2>
+
+
+
+                <!-- CASSETTE -->
 
                 <div
                     class="cassette"
-                    onclick="reproducirMusica()"
+                    id="cassette"
                     role="button"
                     tabindex="0"
-                    aria-label="Reproducir nuestra música"
+                    aria-label="Reproducir música"
                 >
+
 
                     <div class="cassette-cuerpo">
 
+
                         <div class="cassette-etiqueta">
+
                             DANY ♡ AIDEN
+
                         </div>
 
+
                         <div class="cassette-cinta">
+
                             ◉━━━━━━◉
+
                         </div>
+
 
                     </div>
 
+
                 </div>
 
+
                 <p id="estadoMusica">
+
                     Toca el cassette 🎵
+
                 </p>
 
 
-                <h2>🎵 Nuestra playlist</h2>
+
+                <!-- PLAYLIST -->
+
+                <h2>
+                    🎵 Nuestra playlist
+                </h2>
+
 
                 <div class="playlist">
+
 
                     <p>
                         Nuestra música juntos 💙
                     </p>
 
+
                     <iframe
                         id="youtubePlayer"
                         width="100%"
                         height="400"
-                        src="https://www.youtube.com/embed/videoseries?list=PLWHvK6rulx34&enablejsapi=1&origin=https%3A%2F%2Faiden-que.github.io"
+                        src="https://www.youtube.com/embed/videoseries?list=PLWHvK6rulx34&enablejsapi=1"
                         title="Nuestra playlist 💙"
                         frameborder="0"
                         allow="autoplay; encrypted-media; picture-in-picture"
-                        allowfullscreen>
+                        allowfullscreen
+                    >
                     </iframe>
 
+
                 </div>
+
 
             </section>
 
 
-            <!-- ========================= -->
-            <!-- RECUERDOS -->
-            <!-- ========================= -->
+
+            <!-- ================================= -->
+            <!-- CORAZÓN / RECUERDOS -->
+            <!-- ================================= -->
 
             <section class="final-interactivo">
 
+
                 <button
                     id="corazon"
-                    onclick="siguienteRecuerdo()"
                     type="button"
                 >
 
                     ❤️
 
                     <span id="textoCorazon">
+
                         CLIC AQUÍ
+
                     </span>
 
                 </button>
 
+
                 <div id="recuerdos"></div>
 
+
                 <div id="contador"></div>
+
+
+
+                <!-- IMAGEN FINAL -->
 
                 <img
                     id="imagenFinal"
@@ -255,24 +357,37 @@
                     alt="Nuestra imagen final"
                 >
 
+
                 <h1 id="teAmo">
+
                     Te amo
+
                 </h1>
+
 
             </section>
 
+
         </div>
+
 
     </main>
 
 
-    <!-- ========================= -->
-    <!-- YOUTUBE + JAVASCRIPT -->
-    <!-- ========================= -->
+
+    <!-- ================================= -->
+    <!-- YOUTUBE -->
+    <!-- ================================= -->
 
     <script src="https://www.youtube.com/iframe_api"></script>
 
+
+    <!-- ================================= -->
+    <!-- TU JAVASCRIPT -->
+    <!-- ================================= -->
+
     <script src="script.js"></script>
+
 
 </body>
 
