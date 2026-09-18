@@ -1,3 +1,4 @@
+alert("JavaScript funciona");
 // Mostrar la pantalla de contraseña
 function mostrarPassword() {
     document.getElementById("inicio").classList.add("oculto");
