@@ -10,27 +10,39 @@ body {
     font-family: "Segoe Print", "Comic Sans MS", cursive;
 }
 
-/* Ocultar secciones */
+/* =========================
+   SECCIONES
+========================= */
+
 .oculto {
-    display: none;
+    display: none !important;
 }
 
-/* Decoración general */
+
+/* =========================
+   ESTRELLAS
+========================= */
+
 body::before {
     content: "✦   ☆      ☾      ✧    ☆       ✦      ☽";
     position: fixed;
-    top: 20px;
+    top: 18px;
     left: 0;
     width: 100%;
     text-align: center;
-    color: #e8eef2;
+    color: #eef4f7;
     font-size: 22px;
-    letter-spacing: 12px;
+    letter-spacing: 10px;
     opacity: 0.8;
     pointer-events: none;
+    z-index: 0;
 }
 
-/* SOBRE */
+
+/* =========================
+   SOBRE
+========================= */
+
 #inicio {
     min-height: 100vh;
     display: flex;
@@ -38,6 +50,8 @@ body::before {
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .sobre {
@@ -47,7 +61,7 @@ body::before {
 }
 
 .sobre:hover {
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(-2deg);
 }
 
 #inicio p {
@@ -55,7 +69,11 @@ body::before {
     font-size: 20px;
 }
 
-/* CONTRASEÑA */
+
+/* =========================
+   CONTRASEÑA
+========================= */
+
 #password {
     min-height: 100vh;
     display: flex;
@@ -64,10 +82,17 @@ body::before {
     align-items: center;
     text-align: center;
     padding: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 #password h2 {
+    color: #f2f5f7;
     font-size: 32px;
+}
+
+#password > p {
+    color: #edf3f6;
 }
 
 .acertijo {
@@ -77,7 +102,7 @@ body::before {
 }
 
 #passwordInput {
-    width: 130px;
+    width: 140px;
     padding: 12px;
     border: none;
     border-radius: 12px;
@@ -105,28 +130,45 @@ button:hover {
 }
 
 #errorPassword {
-    color: #7d2535;
+    color: #ffd9df !important;
     font-weight: bold;
 }
 
-/* CARTA */
+
+/* =========================
+   CARTA
+========================= */
+
 #carta {
     padding: 70px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .hoja {
-    max-width: 800px;
+    max-width: 820px;
     margin: auto;
-    padding: 60px 55px;
+    padding: 65px 60px;
     background: #f5efe2;
-    border-radius: 28px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.25),
+        inset 0 0 30px rgba(100, 80, 50, 0.05);
 }
 
+
+/* =========================
+   PARTES DE LA CARTA
+========================= */
+
 .parte-carta {
-    min-height: 700px;
-    padding: 30px 0 80px;
+    padding: 35px 0 100px;
     text-align: center;
+}
+
+.parte-carta + .parte-carta {
+    border-top: 1px dashed rgba(38, 55, 70, 0.25);
+    padding-top: 90px;
 }
 
 .parte-carta img {
@@ -134,7 +176,7 @@ button:hover {
     max-height: 500px;
     object-fit: contain;
     border-radius: 18px;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 }
 
 .parte-carta p {
@@ -143,15 +185,52 @@ button:hover {
     text-align: left;
 }
 
-/* MÚSICA */
+
+/* =========================
+   CASSETTE
+========================= */
+
 .musica {
     text-align: center;
-    padding: 70px 0;
+    padding: 70px 0 100px;
+}
+
+.musica h2 {
+    margin-bottom: 30px;
 }
 
 .cassette {
-    font-size: 100px;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cassette-cuerpo {
+    width: 330px;
+    height: 210px;
+    background: #526c7c;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+}
+
+.cassette-cuerpo:hover {
+    transform: translateY(-5px) rotate(-1deg);
+}
+
+.cassette-etiqueta {
+    background: #dce7ed;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: "Segoe Print", cursive;
+    font-weight: bold;
+}
+
+.cassette-cinta {
+    margin-top: 55px;
+    font-size: 35px;
+    color: #e9eef1;
 }
 
 .playlist {
@@ -162,19 +241,23 @@ button:hover {
     background: #dbe5ea;
 }
 
-/* FINAL */
+
+/* =========================
+   FINAL
+========================= */
+
 .final-interactivo {
     text-align: center;
-    padding: 100px 0 40px;
+    padding: 100px 0 60px;
 }
 
 #corazon {
     background: none;
-    font-size: 110px;
     padding: 20px;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    font-size: 110px;
 }
 
 #corazon span {
@@ -183,45 +266,69 @@ button:hover {
 }
 
 #recuerdos {
-    margin-top: 40px;
+    margin: 45px auto 20px;
 }
 
 #recuerdos img {
     width: min(100%, 500px);
+    max-height: 550px;
+    object-fit: contain;
     border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 #contador {
-    font-size: 60px;
+    margin-top: 20px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 40px 0;
 }
 
 #imagenFinal {
     display: none;
     width: min(100%, 650px);
-    margin: 40px auto;
+    margin: 40px auto 20px;
     border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
-/* MÓVIL */
+#teAmo {
+    display: none;
+    margin: 20px 0 50px;
+    font-size: 50px;
+    color: #263746;
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
 @media (max-width: 600px) {
+
+    #carta {
+        padding: 35px 12px;
+    }
 
     .hoja {
         padding: 40px 25px;
-        border-radius: 22px;
-    }
-
-    .parte-carta {
-        min-height: auto;
-        padding-bottom: 70px;
+        border-radius: 24px;
     }
 
     .parte-carta p {
         font-size: 17px;
+        line-height: 1.9;
     }
 
     .sobre {
         font-size: 90px;
+    }
+
+    .cassette-cuerpo {
+        width: 280px;
+        height: 180px;
+    }
+
+    #teAmo {
+        font-size: 40px;
     }
 }
