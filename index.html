@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +18,14 @@
 
     <section id="inicio">
 
-        <div class="sobre" onclick="mostrarPassword()">
+        <button
+            class="sobre"
+            onclick="mostrarPassword()"
+            type="button"
+            aria-label="Abrir sobre"
+        >
             💌
-        </div>
+        </button>
 
         <p>Para ti, mi lindo sueño</p>
 
@@ -45,10 +51,14 @@
             type="text"
             id="passwordInput"
             maxlength="4"
+            inputmode="numeric"
             placeholder="____"
         >
 
-        <button onclick="comprobarPassword()">
+        <button
+            onclick="comprobarPassword()"
+            type="button"
+        >
             🔓 Desbloquear
         </button>
 
@@ -76,7 +86,6 @@
                 >
 
                 <p>
-
                     Hola honey,<br><br>
 
                     Hoy es un día muy especial para ambos.
@@ -96,7 +105,6 @@
                     completo mi perspectiva de las relaciones a distancia
                     y eso es algo que nunca creí que pasaría, pero hoy
                     que estoy a tu lado, no me arrepiento de nada.
-
                 </p>
 
             </section>
@@ -112,7 +120,6 @@
                 >
 
                 <p>
-
                     He amado cada momento a tu lado y amaré cada momento
                     que pasemos a futuro.<br><br>
 
@@ -128,7 +135,6 @@
 
                     Siempre que necesites espacio te lo daré y,
                     cuando estés listo, estaré a tu lado.
-
                 </p>
 
             </section>
@@ -144,7 +150,6 @@
                 >
 
                 <p>
-
                     Porque conmigo jamás tendrás que fingir.
                     No me iré jamás.<br><br>
 
@@ -156,7 +161,6 @@
                     y besaré cada herida que te cueste sanar.<br><br>
 
                     Te amo, mi lindo sueño. ❤️
-
                 </p>
 
             </section>
@@ -170,12 +174,12 @@
 
                 <h2>Nuestra canción 🌙</h2>
 
-
-                <!-- CASSETTE -->
-
                 <div
                     class="cassette"
                     onclick="reproducirMusica()"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Reproducir nuestra música"
                 >
 
                     <div class="cassette-cuerpo">
@@ -192,8 +196,10 @@
 
                 </div>
 
+                <p id="estadoMusica">
+                    Toca el cassette 🎵
+                </p>
 
-                <!-- PLAYLIST DE YOUTUBE -->
 
                 <h2>🎵 Nuestra playlist</h2>
 
@@ -207,10 +213,10 @@
                         id="youtubePlayer"
                         width="100%"
                         height="400"
-                        src="https://www.youtube.com/embed/videoseries?list=PLWHvK6rulx34&enablejsapi=1"
+                        src="https://www.youtube.com/embed/videoseries?list=PLWHvK6rulx34&enablejsapi=1&origin=https%3A%2F%2Faiden-que.github.io"
                         title="Nuestra playlist 💙"
                         frameborder="0"
-                        allow="autoplay; encrypted-media"
+                        allow="autoplay; encrypted-media; picture-in-picture"
                         allowfullscreen>
                     </iframe>
 
@@ -225,10 +231,10 @@
 
             <section class="final-interactivo">
 
-
                 <button
                     id="corazon"
                     onclick="siguienteRecuerdo()"
+                    type="button"
                 >
 
                     ❤️
@@ -239,13 +245,9 @@
 
                 </button>
 
-
                 <div id="recuerdos"></div>
 
                 <div id="contador"></div>
-
-
-                <!-- IMAGEN FINAL -->
 
                 <img
                     id="imagenFinal"
@@ -257,9 +259,7 @@
                     Te amo
                 </h1>
 
-
             </section>
-
 
         </div>
 
@@ -267,13 +267,13 @@
 
 
     <!-- ========================= -->
-    <!-- YOUTUBE -->
+    <!-- YOUTUBE + JAVASCRIPT -->
     <!-- ========================= -->
 
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script src="script.js"></script>
 
-
 </body>
+
 </html>
