@@ -1,159 +1,44 @@
-// ==========================================
-// ESPERAR A QUE CARGUE TODA LA PÁGINA
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", function () {
 
-
-    // ==========================================
-    // SOBRE
-    // ==========================================
-
-    const botonSobre = document.getElementById("botonSobre");
-
-    const inicio = document.getElementById("inicio");
-
-    const password = document.getElementById("password");
-
-
-    if (botonSobre) {
-
-        botonSobre.addEventListener("click", function () {
-
-            inicio.classList.add("oculto");
-
-            password.classList.remove("oculto");
-
-            window.scrollTo(0, 0);
-
-        });
-
-    }
-
-
-    // ==========================================
-    // CONTRASEÑA
-    // ==========================================
-
-    const botonDesbloquear =
-        document.querySelector("#password button");
-
-    const passwordInput =
-        document.getElementById("passwordInput");
-
-    const errorPassword =
-        document.getElementById("errorPassword");
-
-    const carta =
-        document.getElementById("carta");
-
-
-    if (botonDesbloquear) {
-
-        botonDesbloquear.addEventListener("click", function () {
-
-            const respuesta =
-                passwordInput.value.trim();
-
-
-            if (respuesta === "1808") {
-
-                password.classList.add("oculto");
-
-                carta.classList.remove("oculto");
-
-                window.scrollTo(0, 0);
-
-            } else {
-
-                errorPassword.textContent =
-                    "Mmm... esa no es 💙 Intenta otra vez.";
-
-            }
-
-        });
-
-    }
-
-
-    // ==========================================
-    // RECUERDOS
-    // ==========================================
+    /* =========================
+       RECUERDOS
+    ========================= */
 
     const recuerdos = [
-
         "img/recuerdo1.jpg",
         "img/recuerdo2.jpg",
         "img/recuerdo3.jpg",
         "img/recuerdo4.jpg",
         "img/recuerdo5.jpg",
         "img/recuerdo6.jpg"
-
     ];
-
 
     let recuerdoActual = 0;
 
-
-    // ==========================================
-    // ELEMENTOS DEL CORAZÓN
-    // ==========================================
-
-    const corazon =
-        document.getElementById("corazon");
-
-    const recuerdosContenedor =
-        document.getElementById("recuerdos");
-
-    const contador =
-        document.getElementById("contador");
-
-    const textoCorazon =
-        document.getElementById("textoCorazon");
-
-    const imagenFinal =
-        document.getElementById("imagenFinal");
-
-    const teAmo =
-        document.getElementById("teAmo");
-
-
-    // ==========================================
-    // CLIC EN EL CORAZÓN
-    // ==========================================
+    const corazon = document.getElementById("corazon");
+    const recuerdosContenedor = document.getElementById("recuerdos");
+    const contador = document.getElementById("contador");
+    const textoCorazon = document.getElementById("textoCorazon");
+    const imagenFinal = document.getElementById("imagenFinal");
+    const teAmo = document.getElementById("teAmo");
 
     if (corazon) {
 
         corazon.addEventListener("click", function () {
 
-
-            // ------------------------------
-            // TODAVÍA QUEDAN RECUERDOS
-            // ------------------------------
-
             if (recuerdoActual < recuerdos.length) {
 
-
                 recuerdosContenedor.innerHTML = `
-
                     <img
                         src="${recuerdos[recuerdoActual]}"
                         alt="Recuerdo"
                     >
-
                 `;
-
 
                 recuerdoActual++;
 
-
                 const quedan =
                     recuerdos.length - recuerdoActual;
-
-
-                // ------------------------------
-                // TODAVÍA QUEDAN MÁS
-                // ------------------------------
 
                 if (quedan > 0) {
 
@@ -163,57 +48,141 @@ document.addEventListener("DOMContentLoaded", function () {
                     textoCorazon.textContent =
                         "SIGUIENTE ❤️";
 
-                }
-
-
-                // ------------------------------
-                // YA NO QUEDAN
-                // ------------------------------
-
-                else {
+                } else {
 
                     contador.textContent =
                         "❤️ 0 recuerdos restantes";
 
                     textoCorazon.textContent =
                         "FINAL ❤️";
+                }
 
+            } else {
+
+                corazon.style.display = "none";
+                contador.style.display = "none";
+                recuerdosContenedor.style.display = "none";
+
+                imagenFinal.style.display = "block";
+                teAmo.style.display = "block";
+
+                imagenFinal.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+
+        });
+    }
+
+
+    /* =========================
+       CASSETTE + YOUTUBE
+    ========================= */
+
+    const cassette = document.getElementById("cassette");
+    const estadoMusica = document.getElementById("estadoMusica");
+
+    let player = null;
+    let youtubeListo = false;
+    let reproduciendo = false;
+
+
+    /*
+       Esta función se llama cuando
+       la API de YouTube termina de cargar.
+    */
+
+    window.onYouTubeIframeAPIReady = function () {
+
+        player = new YT.Player("youtubePlayer", {
+
+            events: {
+
+                onReady: function () {
+
+                    youtubeListo = true;
+
+                    if (estadoMusica) {
+                        estadoMusica.textContent =
+                            "Toca el cassette 🎵";
+                    }
+                },
+
+                onStateChange: function (event) {
+
+                    if (event.data === YT.PlayerState.PLAYING) {
+
+                        reproduciendo = true;
+
+                        if (estadoMusica) {
+                            estadoMusica.textContent =
+                                "Reproduciendo nuestra música 🎵💙";
+                        }
+
+                    }
+
+                    if (
+                        event.data === YT.PlayerState.PAUSED ||
+                        event.data === YT.PlayerState.ENDED
+                    ) {
+
+                        reproduciendo = false;
+
+                        if (estadoMusica) {
+                            estadoMusica.textContent =
+                                "Toca el cassette para continuar 🎵";
+                        }
+                    }
                 }
 
             }
 
+        });
 
-            // ==================================
-            // MOSTRAR IMAGEN FINAL
-            // ==================================
-
-            else {
-
-                corazon.style.display = "none";
-
-                contador.style.display = "none";
-
-                recuerdosContenedor.style.display = "none";
+    };
 
 
-                imagenFinal.style.display = "block";
+    /*
+       Si la API de YouTube ya estaba cargada
+       antes de ejecutar este archivo.
+    */
 
-                teAmo.style.display = "block";
+    if (window.YT && window.YT.Player) {
+        window.onYouTubeIframeAPIReady();
+    }
 
 
-                imagenFinal.scrollIntoView({
+    /* =========================
+       CLICK DEL CASSETTE
+    ========================= */
 
-                    behavior: "smooth",
+    if (cassette) {
 
-                    block: "center"
+        cassette.addEventListener("click", function () {
 
-                });
+            if (!youtubeListo || !player) {
+
+                if (estadoMusica) {
+                    estadoMusica.textContent =
+                        "Cargando la música... 🎵";
+                }
+
+                return;
+            }
+
+
+            if (reproduciendo) {
+
+                player.pauseVideo();
+
+            } else {
+
+                player.playVideo();
 
             }
 
         });
 
     }
-
 
 });
