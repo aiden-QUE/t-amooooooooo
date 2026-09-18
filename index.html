@@ -9,18 +9,21 @@
 
 <body>
 
-    <!-- SOBRE INICIAL -->
+    <!-- SOBRE -->
     <section id="inicio">
         <div class="sobre" onclick="mostrarPassword()">
             💌
         </div>
+
         <p>Para ti, mi lindo sueño</p>
     </section>
 
 
     <!-- CONTRASEÑA -->
     <section id="password" class="oculto">
+
         <h2>¡ESPERA! 🌙</h2>
+
         <p>Necesitas una contraseña para entrar...</p>
 
         <p class="acertijo">
@@ -28,8 +31,8 @@
             y eso celebramos hoy.”
         </p>
 
-        <input 
-            type="text" 
+        <input
+            type="text"
             id="passwordInput"
             maxlength="4"
             placeholder="____"
@@ -40,6 +43,7 @@
         </button>
 
         <p id="errorPassword"></p>
+
     </section>
 
 
@@ -50,71 +54,170 @@
 
             <!-- CARTA 1 -->
             <section class="parte-carta">
-                <img src="img/carta1.jpg" alt="Imagen de la carta 1">
+
+                <img
+                    src="img/carta1.jpg"
+                    alt="Imagen de la carta"
+                >
 
                 <p>
                     Hola honey,<br><br>
 
-                    Hoy es un día muy especial para ambos...
+                    Hoy es un día muy especial para ambos.
+                    Estoy muy feliz de poder decir que eres mi novio
+                    ya hace un mes. Nunca había sido tan feliz por algo.<br><br>
+
+                    Te amo muchísimo. Conocerte fue como un sueño
+                    para mí y, sinceramente, eres un sueño del que
+                    no quiero despertar.<br><br>
+
+                    Sé que ninguno de los dos es perfecto, pero quiero
+                    decirte que te amaré sin importar las complicaciones,
+                    sin importar si el mundo nos cae encima o si el
+                    universo intenta separarnos.<br><br>
+
+                    Te amo a ti y solo a ti. Me hiciste cambiar por
+                    completo mi perspectiva de las relaciones a distancia
+                    y eso es algo que nunca creí que pasaría, pero hoy
+                    que estoy a tu lado, no me arrepiento de nada.
                 </p>
+
             </section>
 
 
             <!-- CARTA 2 -->
             <section class="parte-carta">
-                <img src="img/carta2.jpg" alt="Imagen de la carta 2">
+
+                <img
+                    src="img/carta2.jpg"
+                    alt="Imagen de la carta"
+                >
 
                 <p>
-                    He amado cada momento a tu lado...
+                    He amado cada momento a tu lado y amaré cada momento
+                    que pasemos a futuro.<br><br>
+
+                    Adoro tu risa, adoro tus ojos, adoro lo random que eres.
+                    Adoro todo, incluso si hay partes tuyas que aún no me
+                    muestras. Amaré cada parte de ti, incluso tus peores partes.<br><br>
+
+                    Te amo y quiero que nos sigamos amando por siempre.<br><br>
+
+                    Escucharte reír, llorar, emocionarte y enojarte,
+                    todas las emociones, porque conmigo jamás tendrás
+                    que fingir.<br><br>
+
+                    Siempre que necesites espacio te lo daré y,
+                    cuando estés listo, estaré a tu lado.
                 </p>
+
             </section>
 
 
             <!-- CARTA 3 -->
             <section class="parte-carta">
-                <img src="img/carta3.jpg" alt="Imagen de la carta 3">
+
+                <img
+                    src="img/carta3.jpg"
+                    alt="Imagen de la carta"
+                >
 
                 <p>
-                    Porque conmigo jamás tendrás que fingir...
+                    Porque conmigo jamás tendrás que fingir,
+                    siempre que necesites espacio te lo daré y cuando
+                    estés listo estaré a tu lado, porque no me iré jamás.<br><br>
+
+                    Sé que no todo siempre será color de rosa, pero incluso
+                    cuando las cosas se pongan feas, querré arreglarlo y cuidarte.<br><br>
+
+                    Escucharé cada parte de ti que me quieras mostrar
+                    y besaré cada herida que te cueste sanar.<br><br>
+
+                    Te amo, mi lindo sueño. ❤️
                 </p>
+
             </section>
 
 
             <!-- CASSETTE -->
             <section class="musica">
-                <div class="cassette">
-                    🎵
+
+                <h2>Nuestra canción 🌙</h2>
+
+                <div
+                    class="cassette"
+                    onclick="reproducirMusica()"
+                >
+                    <div class="cassette-cuerpo">
+                        <div class="cassette-etiqueta">
+                            DANY ♡ AIDEN
+                        </div>
+
+                        <div class="cassette-cinta">
+                            ◉━━━━━━◉
+                        </div>
+                    </div>
                 </div>
 
-                <h2>Nuestra música 🌙</h2>
+                <audio id="audio">
+                    <source src="musica.mp3" type="audio/mpeg">
+                </audio>
 
-                <!-- AQUÍ IRÁ LA PLAYLIST DE YOUTUBE -->
+
+                <!-- PLAYLIST -->
+                <h2>🎵 Nuestra playlist</h2>
+
                 <div class="playlist">
-                    Playlist de YouTube
+
+                    <!-- AQUÍ PONDREMOS LA PLAYLIST DE YOUTUBE -->
+
+                    <p>
+                        Nuestra música juntos 💙
+                    </p>
+
                 </div>
+
             </section>
 
 
             <!-- CORAZÓN -->
             <section class="final-interactivo">
 
-                <button id="corazon" onclick="comenzarFinal()">
+                <button
+                    id="corazon"
+                    onclick="siguienteRecuerdo()"
+                >
+
                     ❤️
-                    <span>CLIC AQUÍ</span>
+
+                    <span id="textoCorazon">
+                        CLIC AQUÍ
+                    </span>
+
                 </button>
 
-                <!-- AQUÍ APARECERÁN LAS 5-6 IMÁGENES -->
+
+                <!-- AQUÍ APARECERÁ UNA IMAGEN POR CLIC -->
+
                 <div id="recuerdos"></div>
 
-                <!-- CUENTA REGRESIVA -->
+
+                <!-- CUÁNTAS IMÁGENES QUEDAN -->
+
                 <div id="contador"></div>
 
+
                 <!-- IMAGEN FINAL -->
-                <img 
+
+                <img
                     id="imagenFinal"
                     src="img/final.jpg"
-                    alt="Imagen final"
+                    alt="Nuestra imagen final"
                 >
+
+                <h1 id="teAmo">
+                    Te amo
+                </h1>
 
             </section>
 
@@ -124,5 +227,6 @@
 
 
     <script src="script.js"></script>
+
 </body>
 </html>
