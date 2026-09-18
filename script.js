@@ -1,239 +1,112 @@
-// ==============================
-// SOBRE → CONTRASEÑA → CARTA
-// ==============================
+// ==========================================
+// ESPERAR A QUE CARGUE TODA LA PÁGINA
+// ==========================================
 
-function mostrarPassword() {
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    // ==========================================
+    // SOBRE
+    // ==========================================
+
+    const botonSobre = document.getElementById("botonSobre");
 
     const inicio = document.getElementById("inicio");
-    const password = document.getElementById("password");
-
-    if (!inicio || !password) return;
-
-    inicio.classList.add("oculto");
-
-    password.classList.remove("oculto");
-
-}
-
-
-// ==============================
-// CONTRASEÑA
-// ==============================
-
-function comprobarPassword() {
-
-    const input = document.getElementById("passwordInput");
-    const error = document.getElementById("errorPassword");
 
     const password = document.getElementById("password");
-    const carta = document.getElementById("carta");
 
-    if (!input || !error || !password || !carta) return;
 
-    const respuesta = input.value.trim();
+    if (botonSobre) {
 
-    if (respuesta === "1808") {
+        botonSobre.addEventListener("click", function () {
 
-        password.classList.add("oculto");
+            inicio.classList.add("oculto");
 
-        carta.classList.remove("oculto");
+            password.classList.remove("oculto");
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
+            window.scrollTo(0, 0);
+
         });
-
-    } else {
-
-        error.textContent =
-            "Mmm... esa no es 💙 Intenta otra vez.";
 
     }
 
-}
+
+    // ==========================================
+    // CONTRASEÑA
+    // ==========================================
+
+    const botonDesbloquear =
+        document.querySelector("#password button");
+
+    const passwordInput =
+        document.getElementById("passwordInput");
+
+    const errorPassword =
+        document.getElementById("errorPassword");
+
+    const carta =
+        document.getElementById("carta");
 
 
-// ==============================
-// YOUTUBE
-// ==============================
+    if (botonDesbloquear) {
 
-let youtubePlayer = null;
+        botonDesbloquear.addEventListener("click", function () {
 
-let youtubeListo = false;
-
-let musicaReproduciendo = false;
+            const respuesta =
+                passwordInput.value.trim();
 
 
-// Esta función la llama automáticamente YouTube
-function onYouTubeIframeAPIReady() {
+            if (respuesta === "1808") {
 
-    youtubePlayer = new YT.Player(
-        "youtubePlayer",
-        {
+                password.classList.add("oculto");
 
-            events: {
+                carta.classList.remove("oculto");
 
-                onReady: function () {
+                window.scrollTo(0, 0);
 
-                    youtubeListo = true;
+            } else {
 
-                },
-
-                onStateChange: function (event) {
-
-                    if (
-                        event.data ===
-                        YT.PlayerState.PLAYING
-                    ) {
-
-                        musicaReproduciendo = true;
-
-                        actualizarEstadoMusica(
-                            "🎵 Reproduciendo..."
-                        );
-
-                    }
-
-
-                    if (
-                        event.data ===
-                        YT.PlayerState.PAUSED
-                    ) {
-
-                        musicaReproduciendo = false;
-
-                        actualizarEstadoMusica(
-                            "⏸️ Pausado"
-                        );
-
-                    }
-
-
-                    if (
-                        event.data ===
-                        YT.PlayerState.ENDED
-                    ) {
-
-                        musicaReproduciendo = false;
-
-                        actualizarEstadoMusica(
-                            "🎵 Toca el cassette para continuar"
-                        );
-
-                    }
-
-                }
+                errorPassword.textContent =
+                    "Mmm... esa no es 💙 Intenta otra vez.";
 
             }
 
-        }
-    );
-
-}
-
-
-// ==============================
-// TEXTO DEL CASSETTE
-// ==============================
-
-function actualizarEstadoMusica(texto) {
-
-    const estado =
-        document.getElementById("estadoMusica");
-
-    if (estado) {
-
-        estado.textContent = texto;
-
-    }
-
-}
-
-
-// ==============================
-// CASSETTE
-// ==============================
-
-function reproducirMusica() {
-
-    const reproductor =
-        document.getElementById("youtubePlayer");
-
-
-    // Si YouTube todavía no terminó
-    // de cargar, mostramos el reproductor.
-
-    if (!youtubeListo || !youtubePlayer) {
-
-        if (reproductor) {
-
-            reproductor.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-        }
-
-        actualizarEstadoMusica(
-            "🎵 Espera a que cargue la playlist..."
-        );
-
-        return;
+        });
 
     }
 
 
-    // PAUSAR
+    // ==========================================
+    // RECUERDOS
+    // ==========================================
 
-    if (musicaReproduciendo) {
+    const recuerdos = [
 
-        youtubePlayer.pauseVideo();
+        "img/recuerdo1.jpg",
+        "img/recuerdo2.jpg",
+        "img/recuerdo3.jpg",
+        "img/recuerdo4.jpg",
+        "img/recuerdo5.jpg",
+        "img/recuerdo6.jpg"
 
-        return;
-
-    }
-
-
-    // REPRODUCIR
-
-    youtubePlayer.playVideo();
-
-}
+    ];
 
 
-// ==============================
-// RECUERDOS
-// ==============================
-
-const recuerdos = [
-
-    "img/recuerdo1.jpg",
-    "img/recuerdo2.jpg",
-    "img/recuerdo3.jpg",
-    "img/recuerdo4.jpg",
-    "img/recuerdo5.jpg",
-    "img/recuerdo6.jpg"
-
-];
+    let recuerdoActual = 0;
 
 
-let recuerdoActual = 0;
+    // ==========================================
+    // ELEMENTOS DEL CORAZÓN
+    // ==========================================
 
+    const corazon =
+        document.getElementById("corazon");
 
-// ==============================
-// CORAZÓN
-// ==============================
-
-function siguienteRecuerdo() {
-
-    const contenedor =
+    const recuerdosContenedor =
         document.getElementById("recuerdos");
 
     const contador =
         document.getElementById("contador");
-
-    const corazon =
-        document.getElementById("corazon");
 
     const textoCorazon =
         document.getElementById("textoCorazon");
@@ -245,85 +118,102 @@ function siguienteRecuerdo() {
         document.getElementById("teAmo");
 
 
-    if (
-        !contenedor ||
-        !contador ||
-        !corazon ||
-        !textoCorazon ||
-        !imagenFinal ||
-        !teAmo
-    ) {
+    // ==========================================
+    // CLIC EN EL CORAZÓN
+    // ==========================================
 
-        return;
+    if (corazon) {
 
-    }
+        corazon.addEventListener("click", function () {
 
 
-    // =========================
-    // MOSTRAR RECUERDO
-    // =========================
+            // ------------------------------
+            // TODAVÍA QUEDAN RECUERDOS
+            // ------------------------------
 
-    if (recuerdoActual < recuerdos.length) {
-
-        contenedor.innerHTML = `
-            <img
-                src="${recuerdos[recuerdoActual]}"
-                alt="Recuerdo"
-            >
-        `;
+            if (recuerdoActual < recuerdos.length) {
 
 
-        recuerdoActual++;
+                recuerdosContenedor.innerHTML = `
+
+                    <img
+                        src="${recuerdos[recuerdoActual]}"
+                        alt="Recuerdo"
+                    >
+
+                `;
 
 
-        const quedan =
-            recuerdos.length - recuerdoActual;
+                recuerdoActual++;
 
 
-        if (quedan > 0) {
-
-            contador.textContent =
-                `❤️ ${quedan} recuerdos restantes`;
-
-            textoCorazon.textContent =
-                "SIGUIENTE ❤️";
-
-        } else {
-
-            contador.textContent =
-                "❤️ 0 recuerdos restantes";
-
-            textoCorazon.textContent =
-                "FINAL ❤️";
-
-        }
-
-    }
+                const quedan =
+                    recuerdos.length - recuerdoActual;
 
 
-    // =========================
-    // IMAGEN FINAL
-    // =========================
+                // ------------------------------
+                // TODAVÍA QUEDAN MÁS
+                // ------------------------------
 
-    else {
+                if (quedan > 0) {
 
-        corazon.style.display = "none";
+                    contador.textContent =
+                        `❤️ ${quedan} recuerdos restantes`;
 
-        contador.style.display = "none";
+                    textoCorazon.textContent =
+                        "SIGUIENTE ❤️";
 
-        contenedor.style.display = "none";
-
-
-        imagenFinal.style.display = "block";
-
-        teAmo.style.display = "block";
+                }
 
 
-        imagenFinal.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
+                // ------------------------------
+                // YA NO QUEDAN
+                // ------------------------------
+
+                else {
+
+                    contador.textContent =
+                        "❤️ 0 recuerdos restantes";
+
+                    textoCorazon.textContent =
+                        "FINAL ❤️";
+
+                }
+
+            }
+
+
+            // ==================================
+            // MOSTRAR IMAGEN FINAL
+            // ==================================
+
+            else {
+
+                corazon.style.display = "none";
+
+                contador.style.display = "none";
+
+                recuerdosContenedor.style.display = "none";
+
+
+                imagenFinal.style.display = "block";
+
+                teAmo.style.display = "block";
+
+
+                imagenFinal.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "center"
+
+                });
+
+            }
+
         });
 
     }
 
-}
+
+});
