@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -10,18 +14,14 @@ body {
     font-family: "Segoe Print", "Comic Sans MS", cursive;
 }
 
-/* =========================
-   SECCIONES
-========================= */
-
 .oculto {
     display: none !important;
 }
 
 
-/* =========================
-   ESTRELLAS
-========================= */
+/* ========================= */
+/* ESTRELLAS */
+/* ========================= */
 
 body::before {
     content: "✦   ☆      ☾      ✧    ☆       ✦      ☽";
@@ -39,29 +39,49 @@ body::before {
 }
 
 
-/* =========================
-   SOBRE
-========================= */
+/* ========================= */
+/* SOBRE */
+/* ========================= */
 
 #inicio {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
+
     position: relative;
     z-index: 1;
 }
 
 .sobre {
     font-size: 110px;
+
     cursor: pointer;
+
+    background: none;
+    border: none;
+
+    padding: 10px;
+    margin: 0;
+
+    appearance: none;
+    -webkit-appearance: none;
+
     transition: transform 0.3s ease;
+
+    touch-action: manipulation;
 }
 
 .sobre:hover {
     transform: scale(1.08) rotate(-2deg);
+}
+
+.sobre:active {
+    transform: scale(0.95);
 }
 
 #inicio p {
@@ -70,18 +90,22 @@ body::before {
 }
 
 
-/* =========================
-   CONTRASEÑA
-========================= */
+/* ========================= */
+/* CONTRASEÑA */
+/* ========================= */
 
 #password {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     text-align: center;
+
     padding: 30px;
+
     position: relative;
     z-index: 1;
 }
@@ -103,30 +127,47 @@ body::before {
 
 #passwordInput {
     width: 140px;
+
     padding: 12px;
+
     border: none;
     border-radius: 12px;
+
     text-align: center;
+
     font-size: 22px;
     letter-spacing: 5px;
+
     outline: none;
 }
 
 button {
     margin-top: 15px;
+
     padding: 12px 22px;
+
     border: none;
     border-radius: 15px;
+
     background: #dce7ed;
     color: #263746;
+
     font-family: inherit;
     font-size: 16px;
+
     cursor: pointer;
+
     transition: transform 0.2s ease;
+
+    touch-action: manipulation;
 }
 
 button:hover {
     transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.96);
 }
 
 #errorPassword {
@@ -135,63 +176,73 @@ button:hover {
 }
 
 
-/* =========================
-   CARTA
-========================= */
+/* ========================= */
+/* CARTA */
+/* ========================= */
 
 #carta {
     padding: 70px 20px;
+
     position: relative;
     z-index: 1;
 }
 
 .hoja {
     max-width: 820px;
+
     margin: auto;
+
     padding: 65px 60px;
+
     background: #f5efe2;
+
     border-radius: 30px;
+
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.25),
         inset 0 0 30px rgba(100, 80, 50, 0.05);
 }
 
-
-/* =========================
-   PARTES DE LA CARTA
-========================= */
-
 .parte-carta {
     padding: 35px 0 100px;
+
     text-align: center;
 }
 
 .parte-carta + .parte-carta {
     border-top: 1px dashed rgba(38, 55, 70, 0.25);
+
     padding-top: 90px;
 }
 
 .parte-carta img {
     width: min(100%, 500px);
+
     max-height: 500px;
+
     object-fit: contain;
+
     border-radius: 18px;
+
     margin-bottom: 40px;
 }
 
 .parte-carta p {
     font-size: 19px;
+
     line-height: 2;
+
     text-align: left;
 }
 
 
-/* =========================
-   CASSETTE
-========================= */
+/* ========================= */
+/* MÚSICA */
+/* ========================= */
 
 .musica {
     text-align: center;
+
     padding: 70px 0 100px;
 }
 
@@ -199,69 +250,128 @@ button:hover {
     margin-bottom: 30px;
 }
 
+
+/* CASSETTE */
+
 .cassette {
     display: flex;
     justify-content: center;
+
     cursor: pointer;
+
+    touch-action: manipulation;
 }
 
 .cassette-cuerpo {
     width: 330px;
     height: 210px;
+
     background: #526c7c;
+
     border-radius: 18px;
+
     padding: 25px;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease;
+
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.3s ease;
 }
 
-.cassette-cuerpo:hover {
+.cassette:hover {
     transform: translateY(-5px) rotate(-1deg);
+}
+
+.cassette:active .cassette-cuerpo {
+    transform: scale(0.97);
 }
 
 .cassette-etiqueta {
     background: #dce7ed;
+
     border-radius: 8px;
+
     padding: 15px;
+
     font-family: "Segoe Print", cursive;
+
     font-weight: bold;
 }
 
 .cassette-cinta {
     margin-top: 55px;
+
     font-size: 35px;
+
     color: #e9eef1;
 }
 
-.playlist {
-    min-height: 150px;
-    margin-top: 25px;
-    padding: 30px;
-    border-radius: 20px;
-    background: #dbe5ea;
+#estadoMusica {
+    min-height: 25px;
+
+    font-size: 15px;
+
+    opacity: 0.8;
 }
 
 
-/* =========================
-   FINAL
-========================= */
+/* PLAYLIST */
+
+.playlist {
+    margin-top: 25px;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: #dbe5ea;
+
+    overflow: hidden;
+}
+
+.playlist p {
+    margin-top: 0;
+}
+
+.playlist iframe {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    border-radius: 12px;
+}
+
+
+/* ========================= */
+/* CORAZÓN / RECUERDOS */
+/* ========================= */
 
 .final-interactivo {
     text-align: center;
+
     padding: 100px 0 60px;
 }
 
 #corazon {
     background: none;
+
     padding: 20px;
+
     display: inline-flex;
+
     flex-direction: column;
+
     align-items: center;
+
     font-size: 110px;
 }
 
 #corazon span {
     font-size: 18px;
+
     color: #263746;
 }
 
@@ -271,37 +381,57 @@ button:hover {
 
 #recuerdos img {
     width: min(100%, 500px);
+
     max-height: 550px;
+
     object-fit: contain;
+
     border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 #contador {
     margin-top: 20px;
+
     font-size: 20px;
+
     font-weight: bold;
 }
 
+
+/* ========================= */
+/* FINAL */
+/* ========================= */
+
 #imagenFinal {
     display: none;
+
     width: min(100%, 650px);
+
     margin: 40px auto 20px;
+
     border-radius: 25px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 #teAmo {
     display: none;
+
     margin: 20px 0 50px;
+
     font-size: 50px;
+
     color: #263746;
 }
 
 
-/* =========================
-   MÓVIL
-========================= */
+/* ========================= */
+/* CELULAR */
+/* ========================= */
 
 @media (max-width: 600px) {
 
@@ -311,21 +441,53 @@ button:hover {
 
     .hoja {
         padding: 40px 25px;
+
         border-radius: 24px;
+    }
+
+    .parte-carta {
+        padding-bottom: 70px;
+    }
+
+    .parte-carta + .parte-carta {
+        padding-top: 65px;
     }
 
     .parte-carta p {
         font-size: 17px;
+
         line-height: 1.9;
     }
 
     .sobre {
         font-size: 90px;
+
+        padding: 15px;
     }
 
     .cassette-cuerpo {
         width: 280px;
         height: 180px;
+
+        padding: 22px;
+    }
+
+    .cassette-cinta {
+        margin-top: 45px;
+
+        font-size: 30px;
+    }
+
+    .playlist {
+        padding: 15px;
+    }
+
+    .playlist iframe {
+        height: 350px;
+    }
+
+    #corazon {
+        font-size: 90px;
     }
 
     #teAmo {
