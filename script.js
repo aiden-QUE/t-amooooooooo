@@ -42,18 +42,26 @@ function comprobarPassword() {
 // CASSETTE
 // ==============================
 
+let youtubePlayer;
+let musicaReproduciendo = false;
+
+function onYouTubeIframeAPIReady() {
+    youtubePlayer = new YT.Player("youtubePlayer");
+}
+
 function reproducirMusica() {
 
-    const audio = document.getElementById("audio");
+    if (!youtubePlayer) return;
 
-    if (audio.paused) {
-        audio.play();
+    if (musicaReproduciendo) {
+        youtubePlayer.pauseVideo();
+        musicaReproduciendo = false;
     } else {
-        audio.pause();
+        youtubePlayer.playVideo();
+        musicaReproduciendo = true;
     }
 
 }
-
 
 // ==============================
 // RECUERDOS
