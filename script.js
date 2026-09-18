@@ -1,31 +1,64 @@
-alert("JavaScript funciona");
-// Mostrar la pantalla de contraseña
+// ==============================
+// SOBRE → CONTRASEÑA → CARTA
+// ==============================
+
 function mostrarPassword() {
     document.getElementById("inicio").classList.add("oculto");
     document.getElementById("password").classList.remove("oculto");
 }
 
-
-// Comprobar contraseña
 function comprobarPassword() {
-    const respuesta = document.getElementById("passwordInput").value;
+
+    const respuesta = document
+        .getElementById("passwordInput")
+        .value
+        .trim();
+
     const error = document.getElementById("errorPassword");
 
     if (respuesta === "1808") {
+
+        // Ocultar contraseña
         document.getElementById("password").classList.add("oculto");
+
+        // Mostrar carta
         document.getElementById("carta").classList.remove("oculto");
 
+        // Llevar automáticamente al inicio de la carta
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
     } else {
+
         error.textContent = "Mmm... esa no es 💙 Intenta otra vez.";
+
     }
 }
 
 
-// Imágenes que aparecerán al final
+// ==============================
+// CASSETTE
+// ==============================
+
+function reproducirMusica() {
+
+    const audio = document.getElementById("audio");
+
+    if (audio.paused) {
+        audio.play();
+    } else {
+        audio.pause();
+    }
+
+}
+
+
+// ==============================
+// RECUERDOS
+// ==============================
+
 const recuerdos = [
     "img/recuerdo1.jpg",
     "img/recuerdo2.jpg",
@@ -35,67 +68,73 @@ const recuerdos = [
     "img/recuerdo6.jpg"
 ];
 
+let recuerdoActual = 0;
 
-// Mostrar las imágenes una por una
-function comenzarFinal() {
 
-    const boton = document.getElementById("corazon");
+// ==============================
+// CORAZÓN
+// ==============================
+
+function siguienteRecuerdo() {
+
     const contenedor = document.getElementById("recuerdos");
     const contador = document.getElementById("contador");
+    const corazon = document.getElementById("corazon");
+    const textoCorazon = document.getElementById("textoCorazon");
     const imagenFinal = document.getElementById("imagenFinal");
+    const teAmo = document.getElementById("teAmo");
 
-    boton.style.display = "none";
 
-    let numero = 0;
+    // Si todavía quedan recuerdos
+    if (recuerdoActual < recuerdos.length) {
 
-    function mostrarRecuerdo() {
+        contenedor.innerHTML = `
+            <img
+                src="${recuerdos[recuerdoActual]}"
+                alt="Recuerdo"
+            >
+        `;
 
-        if (numero < recuerdos.length) {
+        recuerdoActual++;
 
-            contenedor.innerHTML = `
-                <img src="${recuerdos[numero]}" alt="Recuerdo">
-            `;
 
-            numero++;
+        // Mostrar cuántos quedan
+        const quedan = recuerdos.length - recuerdoActual;
 
-            setTimeout(mostrarRecuerdo, 1800);
+        if (quedan > 0) {
+
+            contador.textContent =
+                `❤️ ${quedan} recuerdos restantes`;
+
+            textoCorazon.textContent =
+                `SIGUIENTE ❤️`;
 
         } else {
 
-            iniciarCuentaRegresiva();
+            contador.textContent =
+                "❤️ 0 recuerdos restantes";
+
+            textoCorazon.textContent =
+                "FINAL ❤️";
 
         }
+
     }
 
+    // Cuando ya se mostraron los 6 recuerdos
+    else {
 
-    function iniciarCuentaRegresiva() {
+        corazon.style.display = "none";
+        contador.style.display = "none";
+        contenedor.style.display = "none";
 
-        let tiempo = 3;
+        imagenFinal.style.display = "block";
+        teAmo.style.display = "block";
 
-        contador.textContent = tiempo;
+        imagenFinal.scrollIntoView({
+            behavior: "smooth"
+        });
 
-        const intervalo = setInterval(() => {
-
-            tiempo--;
-
-            if (tiempo > 0) {
-                contador.textContent = tiempo;
-            } else {
-
-                clearInterval(intervalo);
-
-                contador.textContent = "💙";
-
-                imagenFinal.style.display = "block";
-
-                imagenFinal.scrollIntoView({
-                    behavior: "smooth"
-                });
-            }
-
-        }, 1000);
     }
 
-
-    mostrarRecuerdo();
 }
