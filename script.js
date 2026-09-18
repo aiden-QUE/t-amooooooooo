@@ -102,6 +102,17 @@ function onYouTubeIframeAPIReady() {
 
 function reproducirMusica() {
 
+    const player = document.getElementById("youtubePlayer");
+
+    if (!player) return;
+
+    player.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
     if (!youtubeListo) {
 
         alert("Espera un segundo y vuelve a tocar el cassette 🎵");
