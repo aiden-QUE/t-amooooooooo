@@ -43,14 +43,58 @@ function comprobarPassword() {
 // ==============================
 
 let youtubePlayer;
+let youtubeListo = false;
 let musicaReproduciendo = false;
 
 function onYouTubeIframeAPIReady() {
-    youtubePlayer = new YT.Player("youtubePlayer");
+
+    youtubePlayer = new YT.Player("youtubePlayer", {
+
+        events: {
+
+            onReady: function () {
+                youtubeListo = true;
+            },
+
+            onStateChange: function (event) {
+
+                if (event.data === YT.PlayerState.PLAYING) {
+                    musicaReproduciendo = true;
+                }
+
+                if (
+                    event.data === YT.PlayerState.PAUSED ||
+                    event.data === YT.PlayerState.ENDED
+                ) {
+                    musicaReproduciendo = false;
+                }
+
+            }
+
+        }
+
+    });
+
 }
 
 function reproducirMusica() {
 
+    if (!youtubeListo) {
+        alert("Espera un segundo y vuelve a tocar el cassette 🎵");
+        return;
+    }
+
+    if (musicaReproduciendo) {
+
+        youtubePlayer.pauseVideo();
+
+    } else {
+
+        youtubePlayer.playVideo();
+
+    }
+
+}
     if (!youtubePlayer) return;
 
     if (musicaReproduciendo) {
