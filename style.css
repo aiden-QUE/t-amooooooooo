@@ -1,0 +1,227 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #7896aa;
+    color: #263746;
+    font-family: "Segoe Print", "Comic Sans MS", cursive;
+}
+
+/* Ocultar secciones */
+.oculto {
+    display: none;
+}
+
+/* Decoración general */
+body::before {
+    content: "✦   ☆      ☾      ✧    ☆       ✦      ☽";
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #e8eef2;
+    font-size: 22px;
+    letter-spacing: 12px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* SOBRE */
+#inicio {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sobre {
+    font-size: 110px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sobre:hover {
+    transform: scale(1.08);
+}
+
+#inicio p {
+    color: #f2f5f7;
+    font-size: 20px;
+}
+
+/* CONTRASEÑA */
+#password {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+#password h2 {
+    font-size: 32px;
+}
+
+.acertijo {
+    font-size: 21px;
+    line-height: 1.8;
+    margin: 25px 0;
+}
+
+#passwordInput {
+    width: 130px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 5px;
+    outline: none;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 15px;
+    background: #dce7ed;
+    color: #263746;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#errorPassword {
+    color: #7d2535;
+    font-weight: bold;
+}
+
+/* CARTA */
+#carta {
+    padding: 70px 20px;
+}
+
+.hoja {
+    max-width: 800px;
+    margin: auto;
+    padding: 60px 55px;
+    background: #f5efe2;
+    border-radius: 28px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.parte-carta {
+    min-height: 700px;
+    padding: 30px 0 80px;
+    text-align: center;
+}
+
+.parte-carta img {
+    width: min(100%, 500px);
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 18px;
+    margin-bottom: 35px;
+}
+
+.parte-carta p {
+    font-size: 19px;
+    line-height: 2;
+    text-align: left;
+}
+
+/* MÚSICA */
+.musica {
+    text-align: center;
+    padding: 70px 0;
+}
+
+.cassette {
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.playlist {
+    min-height: 150px;
+    margin-top: 25px;
+    padding: 30px;
+    border-radius: 20px;
+    background: #dbe5ea;
+}
+
+/* FINAL */
+.final-interactivo {
+    text-align: center;
+    padding: 100px 0 40px;
+}
+
+#corazon {
+    background: none;
+    font-size: 110px;
+    padding: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#corazon span {
+    font-size: 18px;
+    color: #263746;
+}
+
+#recuerdos {
+    margin-top: 40px;
+}
+
+#recuerdos img {
+    width: min(100%, 500px);
+    border-radius: 20px;
+}
+
+#contador {
+    font-size: 60px;
+    font-weight: bold;
+    margin: 40px 0;
+}
+
+#imagenFinal {
+    display: none;
+    width: min(100%, 650px);
+    margin: 40px auto;
+    border-radius: 25px;
+}
+
+/* MÓVIL */
+@media (max-width: 600px) {
+
+    .hoja {
+        padding: 40px 25px;
+        border-radius: 22px;
+    }
+
+    .parte-carta {
+        min-height: auto;
+        padding-bottom: 70px;
+    }
+
+    .parte-carta p {
+        font-size: 17px;
+    }
+
+    .sobre {
+        font-size: 90px;
+    }
+}
